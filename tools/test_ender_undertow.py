@@ -1,0 +1,159 @@
+"""Exercise the data pack on Horizon's actual headless integrated server."""
+import argparse
+import json
+import os
+from pathlib import Path
+import shutil
+import subprocess
+import tempfile
+
+root = Path(__file__).resolve().parents[1]
+parser = argparse.ArgumentParser()
+parser.add_argument('--client', type=Path, required=True)
+parser.add_argument('--resources', type=Path, required=True)
+parser.add_argument('--seed', type=int, default=23)
+parser.add_argument('--pack-zip', type=Path, help='Install the actual release ZIP in the test world.')
+args = parser.parse_args()
+ops = []
+expected = {}
+
+def cmd(command):
+    ops.append({'op': 'cmd', 'cmd': command})
+
+def check(command, value=1):
+    cmd(command)
+    expected[len([op for op in ops if op['op'] == 'cmd']) - 1] = value
+
+def tick(n):
+    ops.append({'op': 'tick', 'n': n})
+
+cmd('reload')
+tick(2)
+cmd('tp @s 8.5 8 8.5 0 0')
+ops.append({'op': 'settle'})
+cmd('fill -10 6 -10 26 14 26 minecraft:stone')
+cmd('fill -9 7 -9 25 12 25 minecraft:air')
+cmd('gamemode survival')
+cmd('scoreboard players set #odds eu.roll 1')
+# Mine on the surface with an Enderman directly behind the player.
+cmd('fill 6 300 5 10 300 10 minecraft:stone')
+cmd('tp @s 8.5 301 8.5 0 0')
+cmd('summon minecraft:enderman 8.5 301 7.2 {NoAI:1b,PersistenceRequired:1b}')
+cmd('scoreboard players set @s eu.mine0 1')
+tick(1)
+check('execute unless score @s eu.hold matches 1..')
+cmd('tp @s 8.5 7 8.5 0 0')
+cmd('summon minecraft:enderman 8.5 7 7.2 {NoAI:1b,PersistenceRequired:1b}')
+cmd('scoreboard players set #odds eu.roll 1')
+tick(1)
+check('execute unless score @s eu.hold matches 1..')
+# A wall near the Enderman, beyond the first reach sample.
+cmd('tp @s 8.5 7 8.7 0 0')
+cmd('tp @e[type=minecraft:enderman,distance=..4] 8.5 7 6.65')
+cmd('setblock 8 8 7 minecraft:stone')
+cmd('scoreboard players set @s eu.mine0 1')
+tick(1)
+check('execute unless score @s eu.hold matches 1..')
+cmd('setblock 8 8 7 minecraft:air')
+cmd('tp @e[type=minecraft:enderman,distance=..4] 8.5 7 7.2')
+cmd('gamemode creative')
+cmd('scoreboard players set @s eu.mine0 1')
+tick(1)
+check('execute unless score @s eu.hold matches 1..')
+cmd('gamemode survival')
+cmd('tp @s 8.5 7 8.5 180 0')
+cmd('scoreboard players set @s eu.mine0 1')
+tick(1)
+check('execute unless score @s eu.hold matches 1..')
+cmd('tp @s 8.5 7 8.5 0 0')
+cmd('scoreboard players set @s eu.mine0 1')
+tick(1)
+check('scoreboard players get @s eu.hold', 8)
+check('execute positioned 8.5 7.18 8.5 if entity @s[distance=..0.1]')
+tick(8)
+check('execute positioned 8.5 7 8.5 unless entity @s[distance=..6]')
+check('execute at @s if block ~ ~-1 ~ #undertow:floor if block ~ ~ ~ #undertow:air if block ~ ~1 ~ #undertow:air')
+check('execute if score @s eu.cool matches 2390..2400')
+cmd('tp @s 8.5 7 8.5 0 0')
+cmd('scoreboard players set @s eu.mine0 1')
+tick(1)
+check('execute unless score @s eu.hold matches 1..')
+# Mutate the destination between selection and arrival. A late obstruction must cancel.
+for block, height in [('lava', 0), ('water', 1), ('stone', 0), ('air', -1)]:
+    cmd('tp @s 8.5 7 8.5')
+    cmd('setblock 0 6 0 minecraft:stone')
+    cmd('setblock 0 7 0 minecraft:air')
+    cmd('setblock 0 8 0 minecraft:air')
+    cmd(f'setblock 0 {7+height} 0 minecraft:{block}')
+    for axis, coord in zip('xyz', [0,7,0]):
+        cmd(f'scoreboard players set @s eu.{axis} {coord}')
+    cmd('function undertow:release')
+    check('execute positioned 8.5 7 8.5 if entity @s[distance=..0.1]')
+
+# A valid destination is our positive control for every late-hazard case.
+cmd('fill -2 6 -2 2 6 2 minecraft:stone')
+cmd('fill -2 7 -2 2 9 2 minecraft:air')
+cmd('function undertow:arrive {x:0,y:7,z:0}')
+check('execute positioned 0.5 7 0.5 if entity @s[distance=..0.01]')
+for hazard, position in [('lava', '0 9 0'), ('lava', '1 7 0'), ('water', '0 9 0')]:
+    cmd('tp @s 8.5 7 8.5')
+    cmd(f'setblock {position} minecraft:{hazard}')
+    cmd('function undertow:arrive {x:0,y:7,z:0}')
+    check('execute positioned 8.5 7 8.5 if entity @s[distance=..0.01]')
+    cmd(f'setblock {position} minecraft:air')
+
+# Replacing the original Enderman mid-lift must cancel even with a second one nearby.
+cmd('tp @s 8.5 7 8.5 0 0')
+cmd('scoreboard players reset @s eu.cool')
+cmd('scoreboard players set @s eu.mine0 1')
+tick(1)
+check('scoreboard players get @s eu.hold', 8)
+cmd('tp @e[type=minecraft:enderman,distance=..4] 16 7 16')
+cmd('summon minecraft:enderman 8.5 7 7.2 {NoAI:1b,PersistenceRequired:1b}')
+tick(8)
+check('execute positioned 8.5 7 8.5 if entity @s[distance=..3]')
+cmd('tp @s 8.5 7 8.5 0 0')
+# A sealed two-block air pocket is ineligible, even with solid ground.
+cmd('fill -1 6 -1 1 8 1 minecraft:stone')
+cmd('fill 0 7 0 0 8 0 minecraft:air')
+cmd('function undertow:arrive {x:0,y:7,z:0}')
+check('execute positioned 8.5 7 8.5 if entity @s[distance=..0.1]')
+# No other dry landing in range: the search must finish without starting a carry.
+cmd('fill -9 2 -9 25 14 25 minecraft:stone')
+cmd('fill 7 7 6 9 12 9 minecraft:air')
+cmd('scoreboard players reset @s eu.cool')
+cmd('tp @s 8.5 7 8.5 0 0')
+cmd('scoreboard players set @s eu.mine0 1')
+tick(1)
+check('scoreboard players get @s eu.tries', 0)
+check('execute unless score @s eu.hold matches 1..')
+
+with tempfile.TemporaryDirectory(prefix='undertow-') as tmp:
+    lab = Path(tmp)
+    packs = lab/'saves/testworld/datapacks'
+    packs.mkdir(parents=True)
+    if args.pack_zip:
+        shutil.copy2(args.pack_zip, packs/args.pack_zip.name)
+    else:
+        shutil.copytree(root/'datapacks/ender_undertow', packs/'ender_undertow')
+    script = lab/'script.jsonl'
+    output = lab/'result.jsonl'
+    script.write_text(''.join(json.dumps(op)+'\n' for op in ops))
+    env = dict(os.environ, HORIZON_SERVER_THREAD='1', HORIZON_PLAYER_NAME='Player',
+               HORIZON_COMMAND_SCRIPT=str(script), HORIZON_COMMAND_OUTPUT=str(output),
+               HORIZON_HOME=str(lab/'home'), HORIZON_LAUNCHER_HOME=str(lab/'launcher'),
+               XDG_DATA_HOME=str(lab/'data'), XDG_CONFIG_HOME=str(lab/'config'),
+               HORIZON_NO_AUDIO='1', HORIZON_LAUNCHER_NO_SELF_UPDATE='1')
+    proc = subprocess.run([str(args.client.resolve()), '--resources', str(args.resources.resolve()),
+                           '--world', 'testworld', '--seed', str(args.seed), '--radius', '3'],
+                          cwd=lab, env=env, capture_output=True, timeout=150)
+    if proc.returncode or not output.exists():
+        raise RuntimeError(proc.stderr.decode(errors='replace')[-3500:])
+    rows = [json.loads(line) for line in output.read_text(encoding='utf8').splitlines()]
+    failures = []
+    for index, value in expected.items():
+        if [True,value] not in rows[index]['results']:
+            failures.append((index, rows[index]['cmd'], value, rows[index]['results']))
+    if failures:
+        raise AssertionError(failures)
+    print(f'{len(expected)} integrated-server checks passed')

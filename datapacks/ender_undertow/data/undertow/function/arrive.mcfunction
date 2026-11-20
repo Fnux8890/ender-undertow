@@ -1,0 +1,1 @@
+$execute positioned $(x) $(y) $(z) align xyz positioned ~0.5 ~ ~0.5 if loaded ~ ~ ~ if block ~ ~-1 ~ #undertow:floor if block ~ ~ ~ #undertow:air if block ~ ~1 ~ #undertow:air run function undertow:blink

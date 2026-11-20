@@ -1,0 +1,9 @@
+execute if score @s eu.found matches 0 positioned ~ ~0 ~ if loaded ~ ~ ~ if block ~ ~-1 ~ #undertow:floor if block ~ ~ ~ #undertow:air if block ~ ~1 ~ #undertow:air run function undertow:height/4
+execute if score @s eu.found matches 0 positioned ~ ~-1 ~ if loaded ~ ~ ~ if block ~ ~-1 ~ #undertow:floor if block ~ ~ ~ #undertow:air if block ~ ~1 ~ #undertow:air run function undertow:height/3
+execute if score @s eu.found matches 0 positioned ~ ~1 ~ if loaded ~ ~ ~ if block ~ ~-1 ~ #undertow:floor if block ~ ~ ~ #undertow:air if block ~ ~1 ~ #undertow:air run function undertow:height/5
+execute if score @s eu.found matches 0 positioned ~ ~-2 ~ if loaded ~ ~ ~ if block ~ ~-1 ~ #undertow:floor if block ~ ~ ~ #undertow:air if block ~ ~1 ~ #undertow:air run function undertow:height/2
+execute if score @s eu.found matches 0 positioned ~ ~2 ~ if loaded ~ ~ ~ if block ~ ~-1 ~ #undertow:floor if block ~ ~ ~ #undertow:air if block ~ ~1 ~ #undertow:air run function undertow:height/6
+execute if score @s eu.found matches 0 positioned ~ ~-3 ~ if loaded ~ ~ ~ if block ~ ~-1 ~ #undertow:floor if block ~ ~ ~ #undertow:air if block ~ ~1 ~ #undertow:air run function undertow:height/1
+execute if score @s eu.found matches 0 positioned ~ ~3 ~ if loaded ~ ~ ~ if block ~ ~-1 ~ #undertow:floor if block ~ ~ ~ #undertow:air if block ~ ~1 ~ #undertow:air run function undertow:height/7
+execute if score @s eu.found matches 0 positioned ~ ~-4 ~ if loaded ~ ~ ~ if block ~ ~-1 ~ #undertow:floor if block ~ ~ ~ #undertow:air if block ~ ~1 ~ #undertow:air run function undertow:height/0
+execute if score @s eu.found matches 0 positioned ~ ~4 ~ if loaded ~ ~ ~ if block ~ ~-1 ~ #undertow:floor if block ~ ~ ~ #undertow:air if block ~ ~1 ~ #undertow:air run function undertow:height/8
