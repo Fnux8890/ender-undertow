@@ -40,7 +40,7 @@ public final class Cinematic {
         if (victim == null) return false;
         if (game.level != level || game.player != victim || !victim.isAlive()
                 || game.gui.screen() instanceof net.minecraft.client.gui.screens.PauseScreen
-                || clock() - start > 65 || landed && clock() - arrival >= 34 && System.nanoTime()-arrivedAtNanos >= 700_000_000L) {
+                || clock() - start > 105 || landed && clock() - arrival >= 34 && System.nanoTime()-arrivedAtNanos >= 700_000_000L) {
             clear();
             return false;
         }
@@ -103,7 +103,7 @@ public final class Cinematic {
 
     public static float jaw(Enderman mob) {
         if (!holding(mob)) return 0;
-        return (float) ease((clock()-start-8)/8);
+        return (float) ease((clock()-start-12)/32);
     }
 
     public static float grip(Enderman mob) {
@@ -143,8 +143,8 @@ public final class Cinematic {
         float facingYaw = camera.yRot() + (float)delta*t;
         float facingPitch = Mth.lerp(t, camera.xRot(), pitch);
 
-        // The scream plays at hold 12, fifteen ticks after the grab at hold 27.
-        double beat = age - 15;
+        // The scream plays at hold 18, forty-four ticks after the grab at hold 62.
+        double beat = age - 44;
         if (beat > 0 && beat < 10) {
             double strength = Minecraft.getInstance().options.screenEffectScale().get();
             double envelope = strength * ease(beat) * (1-ease((beat-1)/9));

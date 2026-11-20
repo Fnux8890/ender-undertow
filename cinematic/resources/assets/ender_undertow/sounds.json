@@ -1,0 +1,8 @@
+{
+  "stare_rise": {
+    "subtitle": "subtitles.entity.enderman.stare",
+    "sounds": [
+      { "name": "minecraft:entity.enderman.stare", "type": "event" }
+    ]
+  }
+}

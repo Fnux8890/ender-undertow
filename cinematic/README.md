@@ -10,9 +10,9 @@ During the scream the miner lowers both hands while the carrier reaches forward.
 
 ## In-game recordings
 
-[Watch the encounter with game audio (MP4)](https://github.com/Fnux8890/ender-undertow/releases/download/v0.2.0-beta.6/ender-undertow-sound-preview.mp4)
+[Watch the encounter with game audio (MP4)](https://github.com/Fnux8890/ender-undertow/releases/download/v0.2.0-beta.7/ender-undertow-sound-preview.mp4)
 
-These silent GIFs were captured from the shipped 26.3 JARs in a local survival world. The test cave uses night vision to make the face and the destination visible. A gravel scrape comes from the carrier as it grabs you. The scream follows the camera recoil and cuts out briefly before a dull stone impact at the landing. Hostile Creatures volume controls the scrape and scream. Players volume controls the landing.
+These silent GIFs were captured from the shipped 26.3 JARs in a local survival world. The test cave uses night vision to make the face and the destination visible. A gravel scrape comes from the carrier as it grabs you. The vanilla Enderman stare swells as the jaw opens. The scream peaks with the camera recoil and cuts out briefly before a dull stone impact at the landing. Hostile Creatures volume controls the scrape and scream. Players volume controls the landing.
 
 [Fabric recording](media/fabric.gif) · [Forge recording](media/forge.gif)
 
@@ -39,4 +39,4 @@ The build uses Mojang's unobfuscated client and the locally installed libraries 
 
 ## Timing
 
-The cinematic starts at hold 27. The first eight steps use the existing ceiling-checked lift. At hold 12 the victim hears the Enderman scream. At hold 6 the world starts to lose focus. At hold zero the server revalidates the landing. Success starts the center-first recovery at the destination. Cancellation releases the camera and clears the overlay. The client also times out if the server stops sending events.
+The cinematic starts at hold 62. The first eight steps use the existing ceiling-checked lift. At hold 18 the victim hears the Enderman scream. At hold 6 the world starts to lose focus. At hold zero the server revalidates the landing. Success starts the center-first recovery at the destination. Cancellation releases the camera and clears the overlay. The client also times out if the server stops sending events.
