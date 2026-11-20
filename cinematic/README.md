@@ -6,7 +6,7 @@ The server chooses the carrier and destination, checks clearance again at releas
 
 Minecraft's **Distortion Effects** setting below 50% selects a gentle neutral dim and skips camera rotation. The camera turn applies only in first person. Opening the pause menu skips presentation. Reconnection clears cinematic capability until the current client announces itself again.
 
-During the scream the miner lowers both hands while the carrier reaches forward. As the scream ends, the world slips out of focus. At the landing, detail returns near the crosshair first, then across the edges over about a second and a half, with a slight sway. The hotbar stays readable. Setting Distortion Effects below 50% also turns off the recovery blur and sway.
+During the scream the miner lowers both hands while the carrier reaches forward. The first-person view jerks upward, shudders twice and settles just before the teleport. Distortion Effects scales the shake and disables it below 50%. As the scream ends, the world slips out of focus. At the landing, detail returns near the crosshair first, then across the edges over about a second and a half, with a slight sway. The hotbar stays readable. Setting Distortion Effects below 50% also turns off the recovery blur and sway.
 
 ## In-game recordings
 

@@ -138,8 +138,20 @@ public final class Cinematic {
         double delta = Mth.wrapDegrees(yaw - camera.yRot());
         if (!Double.isNaN(turnDelta)) delta = turnDelta + Mth.wrapDegrees(delta-turnDelta);
         turnDelta = delta;
-        float t = (float) ease((clock()-start)/10);
-        return new float[]{camera.yRot() + (float)delta*t, Mth.lerp(t, camera.xRot(), pitch)};
+        double age = clock()-start;
+        float t = (float)ease(age/10);
+        float facingYaw = camera.yRot() + (float)delta*t;
+        float facingPitch = Mth.lerp(t, camera.xRot(), pitch);
+
+        // The scream plays at hold 12, fifteen ticks after the grab at hold 27.
+        double beat = age - 15;
+        if (beat > 0 && beat < 10) {
+            double strength = Minecraft.getInstance().options.screenEffectScale().get();
+            double envelope = strength * ease(beat) * (1-ease((beat-1)/9));
+            facingPitch -= (float)(3.6 * envelope * Math.sin(beat*1.32));
+            facingYaw += (float)(envelope * (2.1*Math.sin(beat*1.16) + 0.8*Math.sin(beat*2.07)));
+        }
+        return new float[]{facingYaw, facingPitch};
     }
 
     public static double defocus() {
