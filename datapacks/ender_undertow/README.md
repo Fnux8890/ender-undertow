@@ -14,6 +14,8 @@ The default chance is 1 in 8 per qualifying mining tick. A successful pickup sta
 
 The pack samples at most 32 random columns in a square extending 16 blocks in each horizontal direction. It skips the closest seven blocks and checks up to four blocks above and below the starting height. A landing needs a loaded chunk, a whitelisted full floor, two dry air blocks, and an adjacent walkable air column. It rejects water or lava directly overhead and exposed lava touching the sides of the landing. It checks the landing again before the final teleport. A failed search leaves the miner where they are.
 
+Ordinary landings are sampled within 16 blocks on each horizontal axis and four blocks up or down. A diagonal can be about 23 blocks. Each completed carry rolls once for a 1-in-32 (3.125%) chance to take you to a safe spot at or beside your personal Overworld bed or admin-set spawn point. The home trip has no cave-distance cap. A missing bed, a spawn in another dimension, or an unsafe home falls back to the selected cave. The Fabric and Forge mods can load a distant home on demand. The standalone data pack requires the home area to be loaded.
+
 ## Tuning
 
 For a more occasional encounter, run `/scoreboard players set #odds eu.roll 32`. Use `1` to force the chance roll while testing and `8` to restore the default. Use positive whole numbers. Reloading preserves this setting. A break must award its Minecraft mined statistic, so use a suitable tool. The mined block types are listed in `data/undertow/function/load.mcfunction`. Landing materials are in `data/undertow/tags/block/floor.json`.

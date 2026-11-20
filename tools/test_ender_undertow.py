@@ -153,6 +153,26 @@ if args.cinematic:
     check('execute unless entity @s[tag=eu.in_scene]')
     check('execute positioned 8.5 7 8.5 if entity @s[distance=..2]')
 
+# Exercise both random outcomes deterministically with a saved personal spawn.
+cmd('tp @s 8.5 7 8.5')
+cmd('fill -2 6 -2 2 6 2 minecraft:stone')
+cmd('fill -2 7 -2 2 10 2 minecraft:air')
+cmd('spawnpoint @s 20 7 20')
+cmd('fill 18 6 18 22 6 22 minecraft:oak_planks')
+cmd('fill 18 7 18 22 10 22 minecraft:air')
+for axis, value in [('x', 0), ('y', 7), ('z', 0)]:
+    cmd(f'scoreboard players set @s eu.{axis} {value}')
+cmd('scoreboard players set @s eu.roll 2')
+cmd('execute at @s run function undertow:route')
+check('execute positioned 0.5 7 0.5 if entity @s[distance=..0.1]')
+cmd('scoreboard players set @s eu.roll 1')
+cmd('execute at @s run function undertow:route')
+check('execute positioned 20.5 7 20.5 if entity @s[distance=..0.1]')
+cmd('tp @s 8.5 7 8.5')
+cmd('fill 18 7 18 22 10 22 minecraft:lava')
+cmd('execute at @s run function undertow:route')
+check('execute positioned 0.5 7 0.5 if entity @s[distance=..0.1]')
+
 with tempfile.TemporaryDirectory(prefix='undertow-') as tmp:
     lab = Path(tmp)
     packs = lab/'saves/testworld/datapacks'

@@ -1,0 +1,12 @@
+{
+  "values": [
+    "#undertow:floor",
+    "#minecraft:planks",
+    "#minecraft:logs",
+    "minecraft:bricks",
+    "minecraft:stone_bricks",
+    "minecraft:smooth_stone",
+    "minecraft:polished_deepslate",
+    "minecraft:grass_block"
+  ]
+}
