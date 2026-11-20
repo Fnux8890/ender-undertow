@@ -11,6 +11,8 @@
     "HandshakeMixin",
     "HudMixin",
     "GuiMixin",
+    "FocusMixin",
+    "HandsMixin",
     "CameraMixin",
     "EndermanRendererMixin",
     "RenderStateMixin",

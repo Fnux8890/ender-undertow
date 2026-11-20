@@ -13,6 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 abstract class EndermanRendererMixin {
     @Inject(method="extractRenderState(Lnet/minecraft/world/entity/monster/Enderman;Lnet/minecraft/client/renderer/entity/state/EndermanRenderState;F)V",at=@At("TAIL"))
     private void undertow$pose(Enderman mob, EndermanRenderState state, float partial, CallbackInfo ci) {
+        ((JawState)state).undertow$grip(Cinematic.grip(mob));
         Cinematic.faceVictim(mob, state, partial);
         ((JawState)state).undertow$jaw(Cinematic.jaw(mob));
     }

@@ -6,6 +6,8 @@ The server chooses the carrier and destination, checks clearance again at releas
 
 Minecraft's **Distortion Effects** setting below 50% selects a simple fade and skips camera rotation. The camera turn applies only in first person. Opening the pause menu skips presentation. Reconnection clears cinematic capability until the current client announces itself again.
 
+During the scream the miner lowers both hands while the carrier reaches forward. After the blink the cave comes into focus over about a second and a half, with a slight sway as the player regains sight. Setting Distortion Effects below 50% also turns off the recovery blur and sway.
+
 ## In-game recordings
 
 These silent GIFs were captured from the shipped 26.3 JARs in a local survival world. The test cave uses night vision to make the face and the destination visible. The game plays the Enderman scream during the encounter.

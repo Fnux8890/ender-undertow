@@ -40,7 +40,7 @@ public final class Cinematic {
         if (victim == null) return false;
         if (game.level != level || game.player != victim || !victim.isAlive()
                 || game.gui.screen() instanceof net.minecraft.client.gui.screens.PauseScreen
-                || clock() - start > 65 || landed && clock() - arrival >= 15 && System.nanoTime()-arrivedAtNanos >= 700_000_000L) {
+                || clock() - start > 65 || landed && clock() - arrival >= 34 && System.nanoTime()-arrivedAtNanos >= 700_000_000L) {
             clear();
             return false;
         }
@@ -106,9 +106,31 @@ public final class Cinematic {
         return (float) ease((clock()-start-8)/8);
     }
 
+    public static float grip(Enderman mob) {
+        return holding(mob) ? (float)ease((clock()-start-2)/8) : 0;
+    }
+
+    public static double handDrop() {
+        if (!active()) return 0;
+        return landed ? 1-ease((clock()-arrival-5)/15) : ease((clock()-start-4)/8);
+    }
+
+    public static double fatigue() {
+        if (!active() || !landed) return 0;
+        double strength = Minecraft.getInstance().options.screenEffectScale().get();
+        return strength < 0.5 ? 0 : strength*(1-ease((clock()-arrival-3)/28));
+    }
+
     public static float[] turn(Camera camera, float partial) {
-        if (!active() || landed || camera.entity() != victim || camera.isDetached()
+        if (!active() || camera.entity() != victim || camera.isDetached()
                 || Minecraft.getInstance().options.screenEffectScale().get() < 0.5) return null;
+        if (landed) {
+            double amount = fatigue();
+            if (amount <= 0) return null;
+            double phase = (clock()-arrival)*0.25;
+            return new float[] {camera.yRot() + (float)(1.35*amount*Math.sin(phase)),
+                    camera.xRot() + (float)(0.65*amount*Math.sin(phase*0.8))};
+        }
         if (!(level.getEntity(carrier) instanceof Enderman mob)) return null;
         Vec3 direction = mob.getEyePosition(partial).subtract(camera.position());
         float yaw = (float) Math.toDegrees(Math.atan2(-direction.x, direction.z));

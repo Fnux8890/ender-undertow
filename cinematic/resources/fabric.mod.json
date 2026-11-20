@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "ender_undertow",
-  "version": "0.2.0-beta.1",
+  "version": "0.2.0-beta.2",
   "name": "Ender Undertow",
   "description": "Underground Enderman encounters with a victim-only cinematic.",
   "environment": "*",

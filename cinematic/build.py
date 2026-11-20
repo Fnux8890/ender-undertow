@@ -34,12 +34,15 @@ for loader in ("fabric", "forge"):
     with tempfile.TemporaryDirectory() as tmp:
         out = Path(tmp)
         subprocess.run([args.javac, "--release", "21", "-proc:none", "-classpath", os.pathsep.join(map(str, deps)), "-d", str(out), *sources], check=True)
-        jar = destination / f"ender-undertow-{loader}-26.3-0.2.0-beta.1.jar"
+        jar = destination / f"ender-undertow-{loader}-26.3-0.2.0-beta.2.jar"
         with ZipFile(jar, "w", ZIP_DEFLATED) as archive:
             for folder in [out, pack]:
                 for path in sorted(folder.rglob("*")):
                     if path.is_file() and path.name != "README.md":
                         archive.write(path, path.relative_to(folder).as_posix())
+            for asset in sorted((root / "resources/assets").rglob("*")):
+                if asset.is_file():
+                    archive.write(asset, asset.relative_to(root / "resources").as_posix())
             archive.write(root.parent / "LICENSE", "LICENSE")
             archive.write(root.parent / "art/ender_undertow.png", "pack.png")
             archive.write(root / "resources/undertow.mixins.json", "undertow.mixins.json")
