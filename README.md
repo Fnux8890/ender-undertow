@@ -4,6 +4,12 @@
 
 A survival data pack for **Minecraft Java Edition 26.3** and **Horizon 26.3**. Mine underground with an Enderman close behind you and it can lift you off the floor, then blink you into a nearby cave. Facing it prevents the grab. A wall between you blocks its reach.
 
+## Cinematic beta for Minecraft Java 26.3
+
+The optional mod turns the caught miner toward the Enderman as it opens its mouth and screams. Deep-purple eyelids close over the teleport and open onto the actual landing. The server chooses and validates the destination. Other miners keep their own view.
+
+Choose the **Fabric** or **Minecraft Forge** JAR from the [cinematic beta release](https://github.com/Fnux8890/ender-undertow/releases/tag/v0.2.0-beta.1). Each JAR includes the data pack. See the [installation, accessibility, and targeted rehearsal guide](cinematic/README.md).
+
 ## Play
 
 [Download the data pack ZIP for Java Edition or Horizon](https://github.com/Fnux8890/ender-undertow/releases/download/v0.1.1/ender-undertow-0.1.1.zip). Keep the file zipped. The same download works on both.
@@ -33,8 +39,8 @@ python tools/build.py
 For gameplay changes, use a Horizon client with its command harness and your own prepared 26.3 resources.
 
 ```sh
-python tools/test_ender_undertow.py --client PATH_TO_CLIENT --resources PATH_TO_RESOURCES --pack-zip dist/ender-undertow-0.1.1.zip --seed 23
-python tools/test_mining_input.py --client PATH_TO_CLIENT --control PATH_TO_HORIZON_CTL --resources PATH_TO_RESOURCES --pack-zip dist/ender-undertow-0.1.1.zip
+python tools/test_ender_undertow.py --client PATH_TO_CLIENT --resources PATH_TO_RESOURCES --pack-zip dist/ender-undertow-0.2.0-beta.1.zip --seed 23
+python tools/test_mining_input.py --client PATH_TO_CLIENT --control PATH_TO_HORIZON_CTL --resources PATH_TO_RESOURCES --pack-zip dist/ender-undertow-0.2.0-beta.1.zip
 ```
 
 The 0.1.1 ZIP passed 24 integrated-server checks on each of two seeds. An offscreen survival client also mined stone with a diamond pickaxe and teleported with full health and air. Multiplayer guest behavior still needs a playtest.

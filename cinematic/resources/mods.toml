@@ -1,0 +1,17 @@
+modLoader="javafml"
+loaderVersion="[66,67)"
+license="MIT"
+[[mods]]
+modId="ender_undertow"
+version="0.2.0-beta.1"
+displayName="Ender Undertow"
+authors="Michado"
+description="Underground Enderman encounters with a victim-only cinematic."
+logoFile="pack.png"
+displayTest="IGNORE_ALL_VERSION"
+[[dependencies.ender_undertow]]
+modId="minecraft"
+mandatory=true
+versionRange="[26.3]"
+ordering="NONE"
+side="BOTH"
