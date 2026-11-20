@@ -34,12 +34,19 @@ for loader in ("fabric", "forge"):
     with tempfile.TemporaryDirectory() as tmp:
         out = Path(tmp)
         subprocess.run([args.javac, "--release", "21", "-proc:none", "-classpath", os.pathsep.join(map(str, deps)), "-d", str(out), *sources], check=True)
-        jar = destination / f"ender-undertow-{loader}-26.3-0.2.0-beta.2.jar"
+        jar = destination / f"ender-undertow-{loader}-26.3-0.2.0-beta.3.jar"
         with ZipFile(jar, "w", ZIP_DEFLATED) as archive:
             for folder in [out, pack]:
                 for path in sorted(folder.rglob("*")):
                     if path.is_file() and path.name != "README.md":
                         archive.write(path, path.relative_to(folder).as_posix())
+            # The 26.3 post-chain API accepts static uniform blocks. Share one shader
+            # and generate its small progression of focus distances for either loader.
+            chain = json.loads((root / "focus_chain.json").read_text())
+            for step in range(1, 33):
+                for focus_pass in chain["passes"]:
+                    focus_pass["uniforms"]["FocusConfig"][1]["value"] = step / 32
+                archive.writestr(f"assets/ender_undertow/post_effect/focus_{step}.json", json.dumps(chain))
             for asset in sorted((root / "resources/assets").rglob("*")):
                 if asset.is_file():
                     archive.write(asset, asset.relative_to(root / "resources").as_posix())

@@ -2,17 +2,17 @@
 
 Install the Fabric **or** Minecraft Forge JAR into the instance's `mods/` directory. Use the matching loader on the server and on each client that should see the cinematic. For singleplayer, the same JAR runs both sides. Fabric also needs Fabric API for bundled data pack discovery. The mod includes the encounter data. When upgrading a world from the standalone ZIP, remove the previous Ender Undertow ZIP from that world's `datapacks/` directory to avoid overriding the new functions.
 
-The server chooses the carrier and destination, checks clearance again at release, and controls the teleport. A client that advertises cinematic support gets a longer lift sequence. The close-up, opening mouth, violet eyelids and reveal use that client's real Enderman and destination. Turning the camera does not rotate the gameplay entity. A player without the client presentation follows the original eight-tick encounter whenever their server admits vanilla clients.
+The server chooses the carrier and destination, checks clearance again at release, and controls the teleport. A client that advertises cinematic support gets a longer lift sequence. The close-up, opening mouth and center-first focus pull use that client's real Enderman and destination. Turning the camera does not rotate the gameplay entity. A player without the client presentation follows the original eight-tick encounter whenever their server admits vanilla clients.
 
-Minecraft's **Distortion Effects** setting below 50% selects a simple fade and skips camera rotation. The camera turn applies only in first person. Opening the pause menu skips presentation. Reconnection clears cinematic capability until the current client announces itself again.
+Minecraft's **Distortion Effects** setting below 50% selects a gentle neutral dim and skips camera rotation. The camera turn applies only in first person. Opening the pause menu skips presentation. Reconnection clears cinematic capability until the current client announces itself again.
 
-During the scream the miner lowers both hands while the carrier reaches forward. After the blink the cave comes into focus over about a second and a half, with a slight sway as the player regains sight. Setting Distortion Effects below 50% also turns off the recovery blur and sway.
+During the scream the miner lowers both hands while the carrier reaches forward. As the scream ends, the world slips out of focus. At the landing, detail returns near the crosshair first, then across the edges over about a second and a half, with a slight sway. The hotbar stays readable. Setting Distortion Effects below 50% also turns off the recovery blur and sway.
 
 ## In-game recordings
 
 These silent GIFs were captured from the shipped 26.3 JARs in a local survival world. The test cave uses night vision to make the face and the destination visible. The game plays the Enderman scream during the encounter.
 
-[Fabric recording](media/fabric.gif) · [Forge recording](media/forge.gif)
+[Fabric recording](media/fabric.gif) Â· [Forge recording](media/forge.gif)
 
 ## Target a rehearsal
 
@@ -37,4 +37,4 @@ The build uses Mojang's unobfuscated client and the locally installed libraries 
 
 ## Timing
 
-The cinematic starts at hold 27. The first eight steps use the existing ceiling-checked lift. At hold 12 the victim hears the Enderman scream. At hold 6 the purple lids start to close. At hold zero the server revalidates the landing. Success starts an eye-shaped opening onto the actual world. Cancellation releases the camera and clears the overlay. The client also times out if the server stops sending events.
+The cinematic starts at hold 27. The first eight steps use the existing ceiling-checked lift. At hold 12 the victim hears the Enderman scream. At hold 6 the world starts to lose focus. At hold zero the server revalidates the landing. Success starts the center-first recovery at the destination. Cancellation releases the camera and clears the overlay. The client also times out if the server stops sending events.

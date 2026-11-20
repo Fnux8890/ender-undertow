@@ -6,9 +6,9 @@ A survival data pack for **Minecraft Java Edition 26.3** and **Horizon 26.3**. M
 
 ## Cinematic beta for Minecraft Java 26.3
 
-The optional mod turns the caught miner toward the Enderman as it opens its mouth and screams. Deep-purple eyelids close over the teleport and open onto the actual landing. The server chooses and validates the destination. Other miners keep their own view.
+The optional mod turns the caught miner toward the Enderman as it opens its mouth and screams. The cave slips out of focus during the teleport. At the landing, detail returns around the crosshair first and gradually reaches the corners. The server chooses and validates the destination. Other miners keep their own view.
 
-Choose the **Fabric** or **Minecraft Forge** JAR from the [cinematic beta release](https://github.com/Fnux8890/ender-undertow/releases/tag/v0.2.0-beta.2). Each JAR includes the data pack. See the [installation, accessibility, and targeted rehearsal guide](cinematic/README.md).
+Choose the **Fabric** or **Minecraft Forge** JAR from the [cinematic beta release](https://github.com/Fnux8890/ender-undertow/releases/tag/v0.2.0-beta.3). Each JAR includes the data pack. See the [installation, accessibility, and targeted rehearsal guide](cinematic/README.md).
 
 ## Play
 

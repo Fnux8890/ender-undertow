@@ -142,33 +142,17 @@ public final class Cinematic {
         return new float[]{camera.yRot() + (float)delta*t, Mth.lerp(t, camera.xRot(), pitch)};
     }
 
-    public static void lids(GuiGraphicsExtractor canvas) {
-        if (!active() || !closing && !landed) return;
-        // Even when packets arrive in a burst, hold one visible beat over the relocation.
-        double reveal = Math.min((clock()-arrival-2)/12, (System.nanoTime()-arrivedAtNanos-120_000_000L)/580_000_000.0);
-        double shut = landed ? 1-ease(reveal) : ease((clock()-closed)/5);
-        if (shut <= 0) return;
+    public static double defocus() {
+        if (!active() || !closing && !landed) return 0;
+        if (!landed) return ease((clock()-closed)/5);
+        return 1-ease((clock()-arrival-2)/30);
+    }
+
+    public static void reducedFade(GuiGraphicsExtractor canvas) {
+        if (Minecraft.getInstance().options.screenEffectScale().get() >= 0.5) return;
+        int alpha = (int)(96*defocus());
+        if (alpha == 0) return;
         canvas.nextStratum();
-        int w = canvas.guiWidth(), h = canvas.guiHeight();
-        if (Minecraft.getInstance().options.screenEffectScale().get() < 0.5) {
-            canvas.fill(0,0,w,h,((int)(210*shut)<<24) | 0x200d32);
-            return;
-        }
-        // A broad almond-shaped aperture reveals the live scene between two curved lids.
-        int width = Math.max(1,w/180);
-        for (int x=0; x<w; x+=width) {
-            double nx = 2.0*(x+width*0.5)/w - 1;
-            double aperture = (1-shut)*(1.6-0.6*nx*nx);
-            double middle = h*(0.50+0.035*(1-nx*nx));
-            int top = (int)Math.ceil(middle - h*0.55*aperture);
-            int bottom = (int)Math.floor(middle + h*0.55*aperture);
-            int right = Math.min(w,x+width);
-            if (top>0) canvas.fill(x,0,right,Math.min(h,top),0xff1b0c2b);
-            if (bottom<h) canvas.fill(x,Math.max(0,bottom),right,h,0xff1b0c2b);
-            if (bottom>top) {
-                canvas.fill(x,top,right,top+2,0x704f276a);
-                canvas.fill(x,bottom-2,right,bottom,0x704f276a);
-            }
-        }
+        canvas.fill(0, 0, canvas.guiWidth(), canvas.guiHeight(), alpha << 24);
     }
 }

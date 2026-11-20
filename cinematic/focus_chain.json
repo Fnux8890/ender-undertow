@@ -5,7 +5,7 @@
   "passes": [
     {
       "vertex_shader": "minecraft:core/screenquad",
-      "fragment_shader": "minecraft:post/box_blur",
+      "fragment_shader": "ender_undertow:post/focus",
       "inputs": [
         {
           "sampler_name": "In",
@@ -15,7 +15,7 @@
       ],
       "output": "swap",
       "uniforms": {
-        "BlurConfig": [
+        "FocusConfig": [
           {
             "name": "BlurDir",
             "type": "vec2",
@@ -25,16 +25,16 @@
             ]
           },
           {
-            "name": "Radius",
+            "name": "Defocus",
             "type": "float",
-            "value": 3
+            "value": 0
           }
         ]
       }
     },
     {
       "vertex_shader": "minecraft:core/screenquad",
-      "fragment_shader": "minecraft:post/box_blur",
+      "fragment_shader": "ender_undertow:post/focus",
       "inputs": [
         {
           "sampler_name": "In",
@@ -44,7 +44,7 @@
       ],
       "output": "minecraft:main",
       "uniforms": {
-        "BlurConfig": [
+        "FocusConfig": [
           {
             "name": "BlurDir",
             "type": "vec2",
@@ -54,9 +54,9 @@
             ]
           },
           {
-            "name": "Radius",
+            "name": "Defocus",
             "type": "float",
-            "value": 3
+            "value": 0
           }
         ]
       }

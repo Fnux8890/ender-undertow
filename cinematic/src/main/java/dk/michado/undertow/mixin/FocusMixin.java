@@ -19,16 +19,17 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 abstract class FocusMixin {
     @Shadow @Final private RenderTarget mainRenderTarget;
     @Shadow @Final private CrossFrameResourcePool resourcePool;
-    @Unique private static final Identifier[] UNDERTOW_FOCUS = {
-        Identifier.parse("ender_undertow:focus_soft"), Identifier.parse("ender_undertow:focus_deep")
-    };
+    @Unique private static final Identifier[] UNDERTOW_FOCUS = java.util.stream.IntStream.rangeClosed(0, 32)
+            .mapToObj(i -> Identifier.parse("ender_undertow:focus_" + i)).toArray(Identifier[]::new);
 
     @Inject(method="renderLevel", at=@At("TAIL"))
     private void undertow$focus(CallbackInfo ci) {
-        double fatigue = Cinematic.fatigue();
-        if (fatigue < 0.10) return;
+        double strength = Minecraft.getInstance().options.screenEffectScale().get();
+        if (strength < 0.5) return;
+        int step = (int)Math.round(32 * strength * Cinematic.defocus());
+        if (step == 0) return;
         var shader = Minecraft.getInstance().getShaderManager().getPostChain(
-                UNDERTOW_FOCUS[fatigue > 0.55 ? 1 : 0], LevelTargetBundle.MAIN_TARGETS);
+                UNDERTOW_FOCUS[step], LevelTargetBundle.MAIN_TARGETS);
         if (shader != null) shader.process(mainRenderTarget, resourcePool);
     }
 }
