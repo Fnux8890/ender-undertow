@@ -22,4 +22,14 @@ void main() {
                                + texture(InSampler, texCoord - x*spread));
     }
     fragColor = color / total;
+    // Grade the resolved world once, after the vertical blur. Keep cave lighting
+    // visible through the violet peak and let the center regain color first.
+    if (BlurDir.y > 0.0) {
+        float luma = dot(fragColor.rgb, vec3(0.2126, 0.7152, 0.0722));
+        vec3 blue = vec3(0.018, 0.047, 0.105) + luma * vec3(0.42, 0.72, 1.08);
+        vec3 violet = vec3(0.043, 0.011, 0.081) + luma * vec3(0.37, 0.15, 0.58);
+        vec3 graded = mix(blue, violet, smoothstep(0.63, 0.94, Defocus));
+        float tint = softness * smoothstep(0.06, 0.47, Defocus);
+        fragColor.rgb = mix(fragColor.rgb, graded, tint);
+    }
 }
