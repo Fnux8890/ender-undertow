@@ -2,13 +2,17 @@
 
 ![Two violet eyes above a rift in a cave floor](art/ender_undertow.png)
 
-A survival encounter for Horizon 26.3. Mine underground with an Enderman close behind you and it can lift you off the floor, then blink you into a nearby cave. Facing it prevents the grab. A wall between you blocks its reach.
+A survival data pack for **Minecraft Java Edition 26.3** and **Horizon 26.3**. Mine underground with an Enderman close behind you and it can lift you off the floor, then blink you into a nearby cave. Facing it prevents the grab. A wall between you blocks its reach.
 
 ## Play
 
-1. Download [Ender Undertow 0.1.1](https://github.com/Fnux8890/ender-undertow/releases/download/v0.1.1/ender-undertow-0.1.1.zip).
-2. Put the ZIP in your world's `datapacks/` folder. If upgrading, replace the older ZIP.
-3. Reopen the world or run `/reload`. Use `/datapack list enabled` to confirm the pack is active.
+[Download the data pack ZIP for Java Edition or Horizon](https://github.com/Fnux8890/ender-undertow/releases/download/v0.1.1/ender-undertow-0.1.1.zip). Keep the file zipped. The same download works on both.
+
+- **New Java world:** Open **Data Packs** during world creation, add the ZIP, and enable Ender Undertow.
+- **Existing Java or Horizon world:** Put the ZIP in that world's `datapacks/` folder and reopen the world.
+- **Java dedicated server:** Put the ZIP in the active world folder's `datapacks/` directory and restart the server or run `/reload` as an operator.
+
+Run `/datapack list enabled` to check the installation. When upgrading, replace the previous ZIP. Forge and Fabric are optional. In a modded Java 26.3 instance, use the same world data pack installation path. Vanilla Java 26.3 and Horizon 26.3 are the tested runtimes. Older Minecraft versions and specific Forge/Fabric modpacks have not been verified.
 
 The pack runs on its own in Overworld survival. Breaking a tracked stone or ore block with an appropriate tool gives the Enderman a 1-in-8 chance if it is within reach behind you. Each pickup starts a two-minute cooldown for that player. Your inventory travels with you.
 
