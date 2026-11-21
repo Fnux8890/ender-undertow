@@ -1,5 +1,6 @@
 # This function runs synchronously at the point behind the miner.
 tag @e[type=minecraft:enderman,limit=1,sort=nearest,distance=..0.95] add eu_candidate
+execute as @e[type=minecraft:enderman,tag=eu_candidate,tag=!eu_assessed,distance=..0.95,limit=1,sort=nearest] run function undertow:rift/classify
 scoreboard players set #steps eu.mob 14
 scoreboard players set #clear eu.mob 0
 execute at @s facing entity @e[type=minecraft:enderman,tag=eu_candidate,sort=nearest,limit=1] feet positioned ~ ~1 ~ run function undertow:reach

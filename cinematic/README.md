@@ -12,7 +12,7 @@ During the scream the miner lowers both hands while the carrier reaches forward.
 
 [Watch the encounter with game audio (MP4)](https://github.com/Fnux8890/ender-undertow/releases/download/v0.2.0-beta.7/ender-undertow-sound-preview.mp4)
 
-These silent GIFs were captured from the shipped 26.3 JARs in a local survival world. The test cave uses night vision to make the face and the destination visible. A gravel scrape comes from the carrier as it grabs you. The vanilla Enderman stare swells as the jaw opens. The scream peaks with the camera recoil and cuts out briefly before a dull stone impact at the landing. Hostile Creatures volume controls the scrape and scream. Players volume controls the landing.
+These silent GIFs were captured from the shipped 26.3 JARs in a local survival world. The test cave uses night vision to make the face and the destination visible. A gravel scrape comes from the carrier as it grabs you. The vanilla Enderman stare swells as the jaw opens. The scream peaks with the camera recoil and cuts out briefly before a dull stone impact at the landing. Hostile Creatures volume controls the scrape and scream. A quiet portal sound lingers after the stone impact. Players volume controls both landing cues.
 
 [Fabric recording](media/fabric.gif) · [Forge recording](media/forge.gif)
 

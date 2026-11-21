@@ -1,3 +1,5 @@
+scoreboard players add #rift_clock eu.roll 1
+execute if score #rift_clock eu.roll matches 16.. run function undertow:rift/pulse
 scoreboard players remove @a[scores={eu.cool=1..}] eu.cool 1
 scoreboard players remove @a[scores={eu.hold=1..}] eu.hold 1
 execute as @a[scores={eu.hold=1..}] at @s run function undertow:lift

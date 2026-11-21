@@ -4,5 +4,9 @@
     "sounds": [
       { "name": "minecraft:entity.enderman.stare", "type": "event" }
     ]
+  },
+  "arrival_echo": {
+    "subtitle": "subtitles.entity.enderman.teleport",
+    "sounds": ["minecraft:mob/endermen/portal"]
   }
 }
