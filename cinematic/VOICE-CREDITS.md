@@ -1,5 +1,3 @@
 # The Gentleman's voice
 
-The line “I'm terrible sorry, old chap” was synthesized locally with Piper's Northern English Male medium voice. The voice was trained on Google UK's Northern English male speech corpus, published through OpenSLR under CC BY-SA 4.0. The recording was filtered and normalized for game playback. The generated Ogg clip is distributed under CC BY-SA 4.0.
-
-[Piper model card](https://huggingface.co/rhasspy/piper-voices/blob/main/en/en_GB/northern_english_male/medium/MODEL_CARD) · [Speech dataset and contributors](https://www.openslr.org/83/) · [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+The line "I'm terribly sorry, old chap" uses the approved Gemini 3.1 Flash TTS preview recording with the Algenib voice. The direction called for an elderly British gentleman, a small pause after "sorry," and a quieter "old chap." The original 3.04-second take was encoded as mono Ogg Vorbis for Minecraft.

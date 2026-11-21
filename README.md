@@ -8,9 +8,9 @@ A survival data pack for **Minecraft Java Edition 26.3** and **Horizon 26.3**. M
 
 The optional mod turns the caught miner toward the Enderman as it opens its mouth and screams. The cave slips out of focus and darkens to violet. The tint passes through blue as sight returns. At the landing, detail returns around the crosshair first and gradually reaches the corners. The server chooses and validates the destination. Other miners keep their own view.
 
-On Fabric and Forge, about one in 64 Endermen is **the Gentleman**. His charcoal bowler and curled moustache give him away. If he grabs you, he offers a spoken “I'm terrible sorry, old chap” before the teleport. When a suitable exposed diamond vein is nearby, he lands you facing it. The portal resonance hangs in the cave for three seconds. [Watch the encounter with sound](https://github.com/Fnux8890/ender-undertow/releases/download/v0.2.0-beta.10.1/diamond-escort.mp4).
+On Fabric and Forge, about one in 64 Endermen is **the Gentleman**. His charcoal bowler and curled moustache give him away. If he grabs you, he offers a spoken “I'm terribly sorry, old chap” before the teleport. When a suitable exposed diamond vein is nearby, he lands you facing it. The portal resonance hangs in the cave for three seconds. [Watch the encounter with sound](https://github.com/Fnux8890/ender-undertow/releases/download/v0.2.0-beta.10.2/gentleman-encounter.mp4).
 
-Choose the **Fabric** or **Minecraft Forge** JAR from the [cinematic beta release](https://github.com/Fnux8890/ender-undertow/releases/tag/v0.2.0-beta.10.1). Each JAR includes the data pack. See the [installation, accessibility, and targeted rehearsal guide](cinematic/README.md).
+Choose the **Fabric** or **Minecraft Forge** JAR from the [cinematic beta release](https://github.com/Fnux8890/ender-undertow/releases/tag/v0.2.0-beta.10.2). Each JAR includes the data pack. See the [installation, accessibility, and targeted rehearsal guide](cinematic/README.md).
 
 ## Play
 

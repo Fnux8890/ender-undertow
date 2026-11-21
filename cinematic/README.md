@@ -10,7 +10,7 @@ During the scream the miner lowers both hands while the carrier reaches forward.
 
 ## The Gentleman
 
-On Fabric and Forge, about one in 64 newly assessed Overworld Endermen wears a bowler hat and a curled moustache. When he catches a miner, he says “I'm terrible sorry, old chap” in a Northern English voice. The miner hears the line on the Voice/Speech sound channel. Minecraft subtitles also display it. The 1-in-32 home roll has first priority. On other rolls, the Gentleman looks for exposed diamond or deepslate diamond ore 12–48 blocks away in loaded terrain. If he finds a dry, walkable spot 3–6 blocks from the ore with a clear view, he lands you facing it. Otherwise he uses the selected cave.
+On Fabric and Forge, about one in 64 newly assessed Overworld Endermen wears a bowler hat and a curled moustache. When he catches a miner, he says “I'm terribly sorry, old chap” in an older British voice. The miner hears the line on the Voice/Speech sound channel. Minecraft subtitles also display it. The 1-in-32 home roll has first priority. On other rolls, the Gentleman looks for exposed diamond or deepslate diamond ore 12–48 blocks away in loaded terrain. If he finds a dry, walkable spot 3–6 blocks from the ore with a clear view, he lands you facing it. Otherwise he uses the selected cave.
 
 To dress an existing Enderman for a rehearsal, choose one with an empty head slot:
 
