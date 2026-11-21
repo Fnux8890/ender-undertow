@@ -1,5 +1,9 @@
 # Ender Undertow for Horizon 26.3
 
+One more swing of your pickaxe. A scrape behind you. Turn around in time and the Enderman lets you be. Keep mining and it can lift you off the cave floor. As your sight returns, you might recognize the tunnel. If your captor wore a bowler hat, take a closer look at the stone nearby.
+
+[Try the encounter preview on Michado](https://michado.dk/projects/ender-undertow/).
+
 This cinematic beta targets **Horizon Nightly 2026-11-20** at commit `0a875da91dbb0fdcb7ba8c42c11341aa229af51a`.
 
 ## Install
