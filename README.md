@@ -6,6 +6,8 @@ A survival data pack for **Minecraft Java Edition 26.3** and **Horizon 26.3**. M
 
 [Browse the in-game screenshots and GIFs](media/listings/)
 
+[Install the Horizon cinematic beta](horizon/README.md)
+
 ## Cinematic beta for Minecraft Java 26.3
 
 The optional mod turns the caught miner toward the Enderman as it opens its mouth and screams. The cave slips out of focus and darkens to violet. The tint passes through blue as sight returns. At the landing, detail returns around the crosshair first and gradually reaches the corners. The server chooses and validates the destination. Other miners keep their own view.

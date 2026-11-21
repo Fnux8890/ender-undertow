@@ -1,0 +1,10 @@
+schema = 1
+id = "ender_undertow_focus"
+name = "Ender Undertow Focus"
+version = "0.1.0"
+api = "0.2"
+description = "Center-first focus recovery for the Ender Undertow encounter."
+
+[[post]]
+file = "focus.wgsl"
+name = "Focus recovery"
