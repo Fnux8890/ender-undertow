@@ -184,8 +184,8 @@ if args.native:
     bundle = {
         "INSTALL.md": (ROOT / "horizon/README.md").read_bytes(),
         "LICENSE": (ROOT / "LICENSE").read_bytes(),
-        "ender_undertow.hmod": args.native.read_bytes(),
-        "ender_undertow.hshader": args.shader.read_bytes(),
+        "ender_undertow_cinematic.hmod": args.native.read_bytes(),
+        "ender_undertow_focus.hshader": args.shader.read_bytes(),
     }
     for kind in ("data", "resources"):
         archive_path = DIST / f"ender-undertow-horizon-{kind}-{VERSION}.zip"

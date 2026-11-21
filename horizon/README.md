@@ -9,10 +9,10 @@ This cinematic beta targets **Horizon Nightly 2026-11-20** at commit `0a875da91d
 ## Install
 
 1. Extract the outer beta bundle. Keep the two ZIPs inside it zipped.
-2. Install `ender_undertow.hmod` with the Horizon launcher's native mod installer on the pinned instance. In multiplayer, install it on the host and each player who wants the cinematic.
+2. Install `ender_undertow_cinematic.hmod` with the Horizon launcher's native mod installer on the pinned instance. In multiplayer, install it on the host and each player who wants the cinematic.
 3. Put the **data** ZIP in the world's `datapacks/` directory. Replace any previous Ender Undertow data pack in that world. Reopen it or run `/reload`.
 4. Put the **resources** ZIP in the instance's `resourcepacks/` directory. Enable it in Resource Packs for the bowler, moustache, recorded apology and portal resonance.
-5. Put `ender_undertow.hshader` in `shaderpacks/` and select **Ender Undertow Focus** for blur and warble. The native client also supplies the camera turn, hand motion and color fade when the focus shader is off.
+5. Put `ender_undertow_focus.hshader` in `shaderpacks/` and select **Ender Undertow Focus** for blur and warble. The native client also supplies the camera turn, hand motion and color fade when the focus shader is off.
 6. Run `/trigger eu.scene set 1` in game to opt in. Use `/trigger eu.scene set 2` for ordinary grabs. Enable it again after reconnecting. Horizon's Distortion Effects option scales the shake.
 
 ## Encounters
@@ -32,8 +32,8 @@ Use the Horizon tools for the pinned build. From the repo root, run
 ```sh
 python horizon/build.py
 (cd horizon/native && cargo horizon-mod build)
-horizon-shader pack horizon/focus --out dist/ender_undertow.hshader
-python horizon/build.py --native horizon/native/target/horizon-mod/ender_undertow.hmod --shader dist/ender_undertow.hshader
+horizon-shader pack horizon/focus --out dist/ender_undertow_focus.hshader
+python horizon/build.py --native horizon/native/target/horizon-mod/ender_undertow_cinematic.hmod --shader dist/ender_undertow_focus.hshader
 ```
 
 The bundle is written to `dist/`. The data and resource packs reuse the shared encounter functions and cinematic assets. Run `cargo test` in the native crate after fetching the SDK. The game harness exercises the actual data ZIP in a disposable integrated-server world.
