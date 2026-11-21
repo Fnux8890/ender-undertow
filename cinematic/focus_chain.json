@@ -1,0 +1,65 @@
+{
+  "targets": {
+    "swap": {}
+  },
+  "passes": [
+    {
+      "vertex_shader": "minecraft:core/screenquad",
+      "fragment_shader": "ender_undertow:post/focus",
+      "inputs": [
+        {
+          "sampler_name": "In",
+          "target": "minecraft:main",
+          "bilinear": true
+        }
+      ],
+      "output": "swap",
+      "uniforms": {
+        "FocusConfig": [
+          {
+            "name": "BlurDir",
+            "type": "vec2",
+            "value": [
+              1,
+              0
+            ]
+          },
+          {
+            "name": "Defocus",
+            "type": "float",
+            "value": 0
+          }
+        ]
+      }
+    },
+    {
+      "vertex_shader": "minecraft:core/screenquad",
+      "fragment_shader": "ender_undertow:post/focus",
+      "inputs": [
+        {
+          "sampler_name": "In",
+          "target": "swap",
+          "bilinear": true
+        }
+      ],
+      "output": "minecraft:main",
+      "uniforms": {
+        "FocusConfig": [
+          {
+            "name": "BlurDir",
+            "type": "vec2",
+            "value": [
+              0,
+              1
+            ]
+          },
+          {
+            "name": "Defocus",
+            "type": "float",
+            "value": 0
+          }
+        ]
+      }
+    }
+  ]
+}

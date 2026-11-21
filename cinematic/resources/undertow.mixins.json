@@ -1,0 +1,24 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dk.michado.undertow.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "CommandsMixin",
+    "JoinMixin"
+  ],
+  "client": [
+    "HandshakeMixin",
+    "HudMixin",
+    "GuiMixin",
+    "FocusMixin",
+    "HandsMixin",
+    "CameraMixin",
+    "EndermanRendererMixin",
+    "RenderStateMixin",
+    "EndermanModelMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
