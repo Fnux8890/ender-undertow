@@ -7,6 +7,9 @@ import org.spongepowered.asm.mixin.*;
 
 @Mixin(EndermanRenderState.class)
 abstract class RenderStateMixin implements JawState {
+    @Unique private boolean undertow$gent;
+    public boolean undertow$gentleman() { return undertow$gent; }
+    public void undertow$gentleman(boolean value) { undertow$gent = value; }
     @Unique private float undertow$open;
     @Unique private float undertow$reach;
     public float undertow$grip() { return undertow$reach; }

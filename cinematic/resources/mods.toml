@@ -3,7 +3,7 @@ loaderVersion="[66,67)"
 license="MIT"
 [[mods]]
 modId="ender_undertow"
-version="0.2.0-beta.9"
+version="0.2.0-beta.10"
 displayName="Ender Undertow"
 authors="Michado"
 description="Underground Enderman encounters with a victim-only cinematic."

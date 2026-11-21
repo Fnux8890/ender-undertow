@@ -2,11 +2,22 @@
   "stare_rise": {
     "subtitle": "subtitles.entity.enderman.stare",
     "sounds": [
-      { "name": "minecraft:entity.enderman.stare", "type": "event" }
+      {
+        "name": "minecraft:entity.enderman.stare",
+        "type": "event"
+      }
     ]
   },
   "arrival_echo": {
     "subtitle": "subtitles.entity.enderman.teleport",
-    "sounds": ["minecraft:mob/endermen/portal"]
+    "sounds": [
+      "minecraft:mob/endermen/portal"
+    ]
+  },
+  "gentleman_apology": {
+    "subtitle": "subtitles.ender_undertow.gentleman_apology",
+    "sounds": [
+      "ender_undertow:gentleman_apology"
+    ]
   }
 }

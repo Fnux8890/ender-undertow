@@ -8,6 +8,18 @@ Minecraft's **Distortion Effects** setting below 50% selects a gentle neutral di
 
 During the scream the miner lowers both hands while the carrier reaches forward. The first-person view jerks upward, shudders twice and settles just before the teleport. Distortion Effects scales the shake and disables it below 50%. As the scream ends, the world slips out of focus and darkens to violet. At the teleport the tint shifts through blue, then the natural cave colors return along with focus. At the landing, detail returns near the crosshair first, then across the edges over about a second and a half, with a slight sway. The hotbar stays readable. Setting Distortion Effects below 50% also turns off the recovery blur and sway.
 
+## The Gentleman
+
+On Fabric and Forge, about one in 64 newly assessed Overworld Endermen wears a bowler hat and a curled moustache. When he catches a miner, he says “I'm terrible sorry, old chap” in a Northern English voice. The miner hears the line on the Voice/Speech sound channel. Minecraft subtitles also display it. His ordinary cave search and the separate home roll apply.
+
+To dress an existing Enderman for a rehearsal, choose one with an empty head slot:
+
+```mcfunction
+/execute as @e[type=minecraft:enderman,tag=!eu_rift,sort=nearest,limit=1] run function undertow:gentleman/equip
+```
+
+[Voice credits](VOICE-CREDITS.md)
+
 ## In-game recordings
 
 [Watch the encounter with game audio (MP4)](https://github.com/Fnux8890/ender-undertow/releases/download/v0.2.0-beta.7/ender-undertow-sound-preview.mp4)
