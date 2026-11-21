@@ -10,7 +10,7 @@ During the scream the miner lowers both hands while the carrier reaches forward.
 
 ## The Gentleman
 
-On Fabric and Forge, about one in 64 newly assessed Overworld Endermen wears a bowler hat and a curled moustache. When he catches a miner, he says “I'm terrible sorry, old chap” in a Northern English voice. The miner hears the line on the Voice/Speech sound channel. Minecraft subtitles also display it. His ordinary cave search and the separate home roll apply.
+On Fabric and Forge, about one in 64 newly assessed Overworld Endermen wears a bowler hat and a curled moustache. When he catches a miner, he says “I'm terrible sorry, old chap” in a Northern English voice. The miner hears the line on the Voice/Speech sound channel. Minecraft subtitles also display it. The 1-in-32 home roll has first priority. On other rolls, the Gentleman looks for exposed diamond or deepslate diamond ore 12–48 blocks away in loaded terrain. If he finds a dry, walkable spot 3–6 blocks from the ore with a clear view, he lands you facing it. Otherwise he uses the selected cave.
 
 To dress an existing Enderman for a rehearsal, choose one with an empty head slot:
 
@@ -24,7 +24,7 @@ To dress an existing Enderman for a rehearsal, choose one with an empty head slo
 
 [Watch the encounter with game audio (MP4)](https://github.com/Fnux8890/ender-undertow/releases/download/v0.2.0-beta.7/ender-undertow-sound-preview.mp4)
 
-These silent GIFs were captured from the shipped 26.3 JARs in a local survival world. The test cave uses night vision to make the face and the destination visible. A gravel scrape comes from the carrier as it grabs you. The vanilla Enderman stare swells as the jaw opens. The scream peaks with the camera recoil and cuts out briefly before a dull stone impact at the landing. Hostile Creatures volume controls the scrape and scream. A quiet portal sound lingers after the stone impact. Players volume controls both landing cues.
+These silent GIFs were captured from the shipped 26.3 JARs in a local survival world. The test cave uses night vision to make the face and the destination visible. A gravel scrape comes from the carrier as it grabs you. The vanilla Enderman stare swells as the jaw opens. The scream peaks with the camera recoil and cuts out briefly before a dull stone impact at the landing. Hostile Creatures volume controls the scrape and scream. A three-second portal resonance fades under the returning cave ambience after every cinematic landing. Players volume controls both landing cues.
 
 [Fabric recording](media/fabric.gif) · [Forge recording](media/forge.gif)
 

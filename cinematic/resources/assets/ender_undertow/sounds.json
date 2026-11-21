@@ -19,5 +19,10 @@
     "sounds": [
       "ender_undertow:gentleman_apology"
     ]
+  },
+  "portal_resonance": {
+    "sounds": [
+      "ender_undertow:portal_resonance"
+    ]
   }
 }

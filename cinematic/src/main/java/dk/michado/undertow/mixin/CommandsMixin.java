@@ -13,6 +13,9 @@ abstract class CommandsMixin {
     @Inject(method="<init>",at=@At("RETURN"))
     private void undertow$register(Commands.CommandSelection selection, CommandBuildContext context, CallbackInfo ci) {
         var dispatcher = ((Commands)(Object)this).getDispatcher();
+        dispatcher.register(Commands.literal("undertow_find_overlook")
+                .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
+                .executes(ctx -> DiamondOverlook.find(ctx.getSource().getPlayerOrException())));
         dispatcher.register(Commands.literal("undertow_prepare_home")
                 .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
                 .executes(ctx -> {
