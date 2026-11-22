@@ -198,6 +198,36 @@ impl Hooks for Undertow {
         *self.0.lock().unwrap() = Encounter::default();
     }
 
+    fn render_living_pre(&self, _: &dyn ClientHost, event: &mut RenderLivingPreEvent<'_>) -> Flow {
+        let state = self.0.lock().unwrap();
+        if state.carrier.is_none() || state.carrier_id != Some(event.entity.id) {
+            return Flow::Continue;
+        }
+        let reach = state.scene.hand_drop();
+        if reach <= 0.0 {
+            return Flow::Continue;
+        }
+
+        // Vanilla 26.3 Enderman shoulders sit at (+/-5, -12, 0) in model
+        // space. The layer origin is at the feet, 24 pixels below model zero.
+        let face = Some(CubeFace::new("block/black_concrete").with_uv([0.0, 0.0, 16.0, 16.0]));
+        for (part, x) in [("left_arm", 5.0), ("right_arm", -5.0)] {
+            if event.hidden.hide_named(part).is_err() {
+                continue;
+            }
+            event.draw.push();
+            event.draw.translate([x / 16.0, 36.0 / 16.0, 0.0]);
+            event
+                .draw
+                .rotate_about([1.0, 0.0, 0.0], -52.0 * reach, [0.0; 3]);
+            event
+                .draw
+                .cube([-1.0, -28.0, -1.0], [1.0, 2.0, 1.0], [face; 6], 0x504457);
+            event.draw.pop();
+        }
+        Flow::Continue
+    }
+
     fn register_entity_layers(
         &self,
         _: &RegistrationContext,
@@ -270,16 +300,7 @@ impl EntityRenderLayer for CarrierLayer {
         if state.carrier_id != Some(entity.id) {
             return Ok(());
         }
-        let reach = state.scene.hand_drop();
-        let face = Some(CubeFace::new("block/black_concrete"));
-        for x in [-5.5, 3.5] {
-            draw.cube(
-                [x, 29.0, 1.0],
-                [x + 2.0, 31.0, 2.0 + reach * 14.0],
-                [face; 6],
-                0x504457,
-            );
-        }
+        let face = Some(CubeFace::new("block/black_concrete").with_uv([0.0, 0.0, 16.0, 16.0]));
         let jaw = state.scene.shake() * 3.0;
         draw.cube(
             [-3.0, 38.5 - jaw, 4.0],
