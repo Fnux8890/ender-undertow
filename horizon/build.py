@@ -12,7 +12,7 @@ DIST.mkdir(exist_ok=True)
 BASE = ROOT / "datapacks/ender_undertow"
 JAVA = ROOT / "cinematic/resources"
 PREFIX = "data/undertow/function/"
-VERSION = "26.3-beta.1"
+VERSION = "26.3-beta.2"
 
 
 def tree(directory):
@@ -171,6 +171,7 @@ assets = {"assets/" + key: value for key, value in tree(JAVA / "assets").items()
 assets["pack.mcmeta"] = json.dumps({"pack": {"description": "Ender Undertow voices and wardrobe",
                                              "min_format": [97, 1], "max_format": [97, 1]}}).encode()
 assets["pack.png"] = (ROOT / "art/ender_undertow.png").read_bytes()
+assets["LICENSE"] = (ROOT / "LICENSE").read_bytes()
 assets["VOICE-CREDITS.md"] = (ROOT / "cinematic/VOICE-CREDITS.md").read_bytes()
 archive("resources", assets)
 
@@ -181,6 +182,13 @@ args = parser.parse_args()
 if bool(args.native) != bool(args.shader):
     parser.error("--native and --shader must be supplied together")
 if args.native:
+    for package in (args.native, args.shader):
+        with ZipFile(package) as packaged:
+            if "LICENSE" not in packaged.namelist() or (
+                packaged.read("LICENSE").decode().splitlines()
+                != (ROOT / "LICENSE").read_text(encoding="utf-8").splitlines()
+            ):
+                parser.error(f"{package.name} must include the full project LICENSE")
     bundle = {
         "INSTALL.md": (ROOT / "horizon/README.md").read_bytes(),
         "LICENSE": (ROOT / "LICENSE").read_bytes(),

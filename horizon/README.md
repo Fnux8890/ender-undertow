@@ -39,5 +39,5 @@ python horizon/build.py --native horizon/native/target/horizon-mod/ender_underto
 The bundle is written to `dist/`. The data and resource packs reuse the shared encounter functions and cinematic assets. Run `cargo test` in the native crate after fetching the SDK. The game harness exercises the actual data ZIP in a disposable integrated-server world.
 
 ```sh
-python tools/test_ender_undertow.py --client /path/to/horizon-client --resources /path/to/prepared/resources --pack-zip dist/ender-undertow-horizon-data-26.3-beta.1.zip --cinematic --horizon-parity --seed 41
+python tools/test_ender_undertow.py --client /path/to/horizon-client --resources /path/to/prepared/resources --pack-zip dist/ender-undertow-horizon-data-26.3-beta.2.zip --cinematic --horizon-parity --seed 41
 ```
