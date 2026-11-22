@@ -14,3 +14,11 @@ Golden Hour loaded its Warm horizon, Glow, and Colour grade stages. The active s
 To reproduce with the development client and native mod, enable the encounter data pack, opt in with the cinematic trigger, and use the bundled test encounter with a survival player and an Enderman immediately behind. Capture the destination during recovery and again after recovery. Repeat in the same singleplayer world with Golden Hour selected.
 
 A separate fixed-scene GPU comparison isolates the post effect from camera movement and Undertow's cinematic color overlay. Its white HUD marker stayed white across all three frames. The active effect changed 963 pixels with shaders off and 1,157 with Golden Hour. Omitting the request restored every baseline pixel in both cases. [Capture intervals, hook transitions, and pixel counts](measurements.json)
+
+## Glowstone lighting comparison
+
+The same camera faces a row of glowstone lamps in a singleplayer deepslate chamber. Each row includes the original view and the same detail of the left lamp. Night Vision is off, time is fixed, and the crops use nearest-neighbor enlargement. Golden Hour uses its stock settings. The third row uses a [dedicated wide-bloom shader](glowstone/test-shader) so the warm halo is visible even in a thumbnail.
+
+![Shaders off, stock Golden Hour, and wide bloom on the same glowstone lamps](glowstone/lighting-comparison.png)
+
+[Watch Focus clear over the wide-bloom shader](glowstone/lighting-and-focus.gif). For this fixed-camera shot, the test sent the native cinematic's grab and arrival cues in place without moving the player. The lamps keep their bloom when Focus clears. The two encounters above exercise the full teleport. Full-resolution lighting captures: [shaders off](glowstone/off.png), [Golden Hour](glowstone/golden.png), [wide bloom](glowstone/bloom.png).

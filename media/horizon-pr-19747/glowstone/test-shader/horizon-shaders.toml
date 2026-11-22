@@ -1,0 +1,11 @@
+schema = 1
+id = "glowstone_proof"
+name = "Glowstone proof bloom"
+version = "1.0.0"
+api = "0.2"
+description = "Wide warm bloom for an Undertow compatibility capture."
+authors = ["Michado"]
+license = "MIT"
+[[post]]
+file = "bloom.wgsl"
+name = "Wide warm bloom"
