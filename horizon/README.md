@@ -4,7 +4,9 @@ One more swing of your pickaxe. A scrape behind you. Turn around in time and the
 
 [Try the encounter preview on Michado](https://michado.dk/projects/ender-undertow/).
 
-This development build uses Horizon’s proposed composable post effects. It requires a client and host built against the revision in `native/horizon-mod.toml`. For the published November 20 Nightly, use the [beta.2 bundle and installation guide](https://github.com/Fnux8890/ender-undertow/releases/tag/horizon-26.3-beta.2).
+This development build uses Horizonâ€™s proposed composable post effects. It requires a client and host built against the revision in `native/horizon-mod.toml`. For the published November 20 Nightly, use the [beta.2 bundle and installation guide](https://github.com/Fnux8890/ender-undertow/releases/tag/horizon-26.3-beta.2).
+
+[Watch the in-game encounter with Golden Hour enabled](../media/listings/focus-with-golden-hour.gif). The blue clears from the center as the player lands in the new tunnel.
 
 ## Install
 
