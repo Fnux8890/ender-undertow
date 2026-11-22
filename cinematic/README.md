@@ -8,6 +8,14 @@ Minecraft's **Distortion Effects** setting below 50% selects a gentle neutral di
 
 During the scream the miner lowers both hands while the carrier reaches forward. The first-person view jerks upward, shudders twice and settles just before the teleport. Distortion Effects scales the shake and disables it below 50%. As the scream ends, the world slips out of focus and darkens to violet. At the teleport the tint shifts through blue, then the natural cave colors return along with focus. At the landing, detail returns near the crosshair first, then across the edges over about a second and a half, with a slight sway. The hotbar stays readable. Setting Distortion Effects below 50% also turns off the recovery blur and sway.
 
+## Optional lighting shaders on Fabric
+
+You can leave Complementary Reimagined selected during the encounter. Undertow's Focus effect blurs the lit scene as you teleport, then the cave sharpens from the center outward. The hotbar stays readable. Set Minecraft's Distortion Effects to at least 50% to see the blur. Iris is optional.
+
+Verified in singleplayer with the published Undertow Fabric beta 10.2 JAR on Minecraft Java 26.3, Fabric Loader 0.20.1, Fabric API 0.166.2, Iris 1.11.7, Sodium 0.9.2, and Complementary Reimagined r5.10 on a GeForce GTX 1660 SUPER. Other lighting packs and Forge shader loaders remain unverified.
+
+[Watch the in-game recovery with Complementary Reimagined](media/iris-complementary-recovery.gif).
+
 ## The Gentleman
 
 On Fabric and Forge, about one in 64 newly assessed Overworld Endermen wears a bowler hat and a curled moustache. When he catches a miner, he says “I'm terribly sorry, old chap” in an older British voice. The miner hears the line on the Voice/Speech sound channel. Minecraft subtitles also display it. The 1-in-32 home roll has first priority. On other rolls, the Gentleman looks for exposed diamond or deepslate diamond ore 12–48 blocks away in loaded terrain. If he finds a dry, walkable spot 3–6 blocks from the ore with a clear view, he lands you facing it. Otherwise he uses the selected cave.
