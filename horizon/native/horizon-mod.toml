@@ -1,6 +1,6 @@
 id = "ender_undertow_cinematic"
 name = "Ender Undertow"
-version = "0.1.0-beta.2"
+version = "0.1.0-beta.3-dev"
 description = "First-person underground Enderman encounters"
 api = "0.2"
 side = "both"
@@ -8,5 +8,5 @@ capabilities = ["registries"]
 
 [native]
 game = "26.3"
-horizon = "0a875da91dbb0fdcb7ba8c42c11341aa229af51a"
+horizon = "052f5b0a57be99cbb37052bfabd6f8a44d57a86f"
 mixins = "e59da9094f0c2fdda6c627fe9eff22dec6a906f0"

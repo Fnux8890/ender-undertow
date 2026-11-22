@@ -12,7 +12,7 @@ DIST.mkdir(exist_ok=True)
 BASE = ROOT / "datapacks/ender_undertow"
 JAVA = ROOT / "cinematic/resources"
 PREFIX = "data/undertow/function/"
-VERSION = "26.3-beta.2"
+VERSION = "26.3-beta.3-dev"
 
 
 def tree(directory):
@@ -177,23 +177,21 @@ archive("resources", assets)
 
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument("--native", type=Path, help="Packaged Horizon .hmod to include in the installation bundle")
-parser.add_argument("--shader", type=Path, help="Validated Horizon .hshader to include in the installation bundle")
 args = parser.parse_args()
-if bool(args.native) != bool(args.shader):
-    parser.error("--native and --shader must be supplied together")
 if args.native:
-    for package in (args.native, args.shader):
-        with ZipFile(package) as packaged:
-            if "LICENSE" not in packaged.namelist() or (
-                packaged.read("LICENSE").decode().splitlines()
-                != (ROOT / "LICENSE").read_text(encoding="utf-8").splitlines()
-            ):
-                parser.error(f"{package.name} must include the full project LICENSE")
+    with ZipFile(args.native) as packaged:
+        if "LICENSE" not in packaged.namelist() or (
+            packaged.read("LICENSE").decode().splitlines()
+            != (ROOT / "LICENSE").read_text(encoding="utf-8").splitlines()
+        ):
+            parser.error(f"{args.native.name} must include the full project LICENSE")
+        for asset in ("post_effect/focus.json", "shaders/post/focus.fsh"):
+            if f"assets/ender_undertow_cinematic/{asset}" not in packaged.namelist():
+                parser.error(f"{args.native.name} is missing the built-in focus effect: {asset}")
     bundle = {
         "INSTALL.md": (ROOT / "horizon/README.md").read_bytes(),
         "LICENSE": (ROOT / "LICENSE").read_bytes(),
         "ender_undertow_cinematic.hmod": args.native.read_bytes(),
-        "ender_undertow_focus.hshader": args.shader.read_bytes(),
     }
     for kind in ("data", "resources"):
         archive_path = DIST / f"ender-undertow-horizon-{kind}-{VERSION}.zip"
