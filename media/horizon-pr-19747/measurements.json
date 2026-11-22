@@ -1,0 +1,106 @@
+{
+  "singleplayer": {
+    "Shaders off": {
+      "transitions": [
+        [
+          1795357487.642,
+          0
+        ],
+        [
+          1795357499.794,
+          1
+        ],
+        [
+          1795357504.175,
+          0
+        ]
+      ],
+      "active_capture_window": [
+        1795357502.6227098,
+        1795357503.3394876
+      ],
+      "omitted_capture_window": [
+        1795357504.967518,
+        1795357505.9228199
+      ],
+      "final_player_position": [
+        20.5,
+        30.0,
+        -4.5
+      ]
+    },
+    "Golden Hour 2.0.0": {
+      "transitions": [
+        [
+          1795357568.53,
+          0
+        ],
+        [
+          1795357580.122,
+          1
+        ],
+        [
+          1795357584.633,
+          0
+        ]
+      ],
+      "active_capture_window": [
+        1795357582.9663398,
+        1795357583.7125046
+      ],
+      "omitted_capture_window": [
+        1795357585.5139341,
+        1795357586.338908
+      ],
+      "final_player_position": [
+        7.5,
+        30.0,
+        0.5
+      ]
+    }
+  },
+  "fixed_scene_gpu": {
+    "stock": {
+      "changed_pixels_active": 963,
+      "changed_pixels_after_drop": 0,
+      "hud_marker_rgb": [
+        [
+          255,
+          255,
+          255
+        ],
+        [
+          255,
+          255,
+          255
+        ],
+        [
+          255,
+          255,
+          255
+        ]
+      ]
+    },
+    "native": {
+      "changed_pixels_active": 1157,
+      "changed_pixels_after_drop": 0,
+      "hud_marker_rgb": [
+        [
+          255,
+          255,
+          255
+        ],
+        [
+          255,
+          255,
+          255
+        ],
+        [
+          255,
+          255,
+          255
+        ]
+      ]
+    }
+  }
+}
