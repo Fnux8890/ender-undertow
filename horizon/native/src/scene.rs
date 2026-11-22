@@ -131,6 +131,11 @@ impl Scene {
         }
     }
 
+    pub fn focus_params(&self, distortion_scale: f32, time: f32) -> Option<[f32; 4]> {
+        let edge = self.tint(1.0)[3] * distortion_scale;
+        (edge > 0.0).then(|| [edge, self.tint(0.0)[3] * distortion_scale, time, 0.0])
+    }
+
     pub fn tint(&self, radius: f32) -> [f32; 4] {
         let r = if radius.is_nan() {
             0.0
@@ -209,6 +214,29 @@ fn lerp_rgb(a: [f32; 3], b: [f32; 3], t: f32) -> [f32; 3] {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn focus_follows_the_local_scene_and_distortion_preference() {
+        let mut scene = Scene::default();
+        assert!(scene.focus_params(1.0, 0.0).is_none());
+        scene.grab();
+        scene.arrive();
+        for _ in 0..12 {
+            scene.tick();
+        }
+        assert!(scene.focus_params(0.0, 12.5).is_none());
+        let full = scene.focus_params(1.0, 12.5).unwrap();
+        let half = scene.focus_params(0.5, 12.5).unwrap();
+        assert!(full[0] > full[1]);
+        assert_eq!(half, [full[0] * 0.5, full[1] * 0.5, 12.5, 0.0]);
+        let mut cancelled = scene;
+        cancelled.cancel();
+        assert!(cancelled.focus_params(1.0, 13.0).is_none());
+        for _ in 12..REVEAL_TICKS {
+            scene.tick();
+        }
+        assert!(scene.focus_params(1.0, 35.0).is_none());
+    }
 
     #[test]
     fn hold_and_center_first_reveal_curve() {

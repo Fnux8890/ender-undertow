@@ -1,0 +1,18 @@
+{
+  "targets": { "focus": {} },
+  "passes": [
+    {
+      "vertex_shader": "minecraft:core/screenquad",
+      "fragment_shader": "ender_undertow_cinematic:post/focus",
+      "inputs": [{ "sampler_name": "In", "target": "minecraft:main", "bilinear": true }],
+      "output": "focus"
+    },
+    {
+      "vertex_shader": "minecraft:core/screenquad",
+      "fragment_shader": "minecraft:post/blit",
+      "inputs": [{ "sampler_name": "In", "target": "focus" }],
+      "output": "minecraft:main",
+      "uniforms": { "BlitConfig": [{ "name": "ColorModulate", "type": "vec4", "value": [1, 1, 1, 1] }] }
+    }
+  ]
+}

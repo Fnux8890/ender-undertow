@@ -214,17 +214,14 @@ impl Hooks for Undertow {
         Flow::Continue
     }
 
-    fn shader_params(&self, _: &dyn ClientHost, event: &mut ShaderParamsEvent<'_>) {
+    fn mod_post_effects(&self, _: &dyn ClientHost, event: &mut ModPostEffectsEvent<'_>) {
         let state = self.0.lock().unwrap();
-        // Reserve the last vector and write only during an active encounter.
-        let edge = state.scene.tint(1.0)[3];
-        if edge > 0.0 {
-            event.params[7] = [
-                edge,
-                state.scene.tint(0.0)[3],
-                state.clock as f32 + event.partial,
-                97.25,
-            ];
+        let time = state.clock as f32 + event.partial;
+        if let Some(params) = state.scene.focus_params(event.distortion_scale, time) {
+            event.effects.push(ModPostEffect {
+                id: Identifier::parse("ender_undertow_cinematic:focus").unwrap(),
+                params,
+            });
         }
     }
 
